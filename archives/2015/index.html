@@ -449,7 +449,7 @@ RecyclerView 是Android L版本中新添加的一个用来取代ListView的SDK�
     var locatePost = $(".locate-thumbnail-symbol").next();
     for(var i=0; i < 10; i++){
         
-        randomNum = Math.floor(Math.random() * 5 + 1);
+        randomNum = Math.floor(Math.random() * 12 + 1);
         
         locatePost.children(".post_thumbnail-random").attr('id', 'random_thumbnail-'+randomNum);
         locatePost.children(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')')
@@ -546,6 +546,12 @@ RecyclerView 是Android L版本中新添加的一个用来取代ListView的SDK�
 
 
     <!-- Pages  -->
+	
+		<li>
+			<a href="/about" title="about">
+				about
+			</a>
+		</li>
 	
 
     <!-- Article Numebr  -->
