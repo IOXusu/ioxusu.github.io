@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android主题切换实现 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如何通过Android提供的API实现夜间主题切换
+
+语法12AppCompatDelegate.setDefaultNightMode([AppCompatDelegate.MODE_NIGHT_NO]);
+
+MODE_NIGHT_NO 日间模式
+
+
+MODE_NIGHT_YES 夜间模式
+
+
+MODE_NIGHT_AUTO 根据时间自动切换日夜间模式
+
+
+MODE_NIGHT_FOLLOW_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android主题切换实现">
+<meta property="og:url" content="http://yoursite.com/2016/12/23/主题切换实现/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="如何通过Android提供的API实现夜间主题切换
+
+语法12AppCompatDelegate.setDefaultNightMode([AppCompatDelegate.MODE_NIGHT_NO]);
+
+MODE_NIGHT_NO 日间模式
+
+
+MODE_NIGHT_YES 夜间模式
+
+
+MODE_NIGHT_AUTO 根据时间自动切换日夜间模式
+
+
+MODE_NIGHT_FOLLOW_">
+<meta property="og:updated_time" content="2016-12-23T05:01:21.546Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android主题切换实现">
+<meta name="twitter:description" content="如何通过Android提供的API实现夜间主题切换
+
+语法12AppCompatDelegate.setDefaultNightMode([AppCompatDelegate.MODE_NIGHT_NO]);
+
+MODE_NIGHT_NO 日间模式
+
+
+MODE_NIGHT_YES 夜间模式
+
+
+MODE_NIGHT_AUTO 根据时间自动切换日夜间模式
+
+
+MODE_NIGHT_FOLLOW_">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-主题切换实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/23/主题切换实现/" class="article-date">
+  <time datetime="2016-12-23T04:51:29.073Z" itemprop="datePublished">2016-12-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/主题切换/">主题切换</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android主题切换实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>如何通过Android提供的API实现夜间主题切换</p>
+</blockquote>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">AppCompatDelegate.setDefaultNightMode([AppCompatDelegate.MODE_NIGHT_NO]);</div></pre></td></tr></table></figure>
+<ul>
+<li>MODE_NIGHT_NO 日间模式</li>
+</ul>
+<ul>
+<li>MODE_NIGHT_YES 夜间模式</li>
+</ul>
+<ul>
+<li>MODE_NIGHT_AUTO 根据时间自动切换日夜间模式</li>
+</ul>
+<ul>
+<li>MODE_NIGHT_FOLLOW_SYSTEM 默认模式，就是跟随系统的设置，据说有可能以后会在android系统设置中添加日夜间模式的设置，此时如果你的app是默认模式，会根据系统设置变化日夜间模式<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1></li>
+</ul>
+<p>只要你的activity继承AppCompatActivity，app的sdk最低版本在14以上，你在任何地方都可以调用AppCompatDelegate.setDefaultNightMode(xxx)，因为这是个静态方法，设置完之后新开启的页面，都会采用新的模式。你需要在每次切换模式之后，把当前模式保存在本地，然后在下次打开app的时候，获取当前模式并调用这个方法设置一下，就可以使app保持之前的模式。</p>
+<p>接下来怎么去自定义自己的日夜间模式呢？<br>方法与之前的NightModeHelper类似，创建带-night后缀的文件夹（比如：values-night），然后添加你的资源文件，资源文件需要相同的命名（比如：colors.xml），这样就把夜间资源和日间资源关联起来了。这里注意一下，如果是drawable-xxhdpi中的资源需要夜间模式，这些夜间的资源就应该放在drawable-night-xxhdpi文件夹中。这里其实灵活性很大的，比如你可以在values-night中创建一个strings.xml，实现日夜间显示不同的文本。甚至你可以在layout-night中创建一个同样名字的布局文件，实现日夜间显示不同的布局。</p>
+<p>官方为了方便开发者，在最新的v23.2.0 Support包增加了一个Theme.AppCompat.DayNight主题，如果继承这个主题，会有一些配置好的属性，如果你喜欢官方的配色，可以考虑继承这个主题，也会省下不少功夫。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/12/23/主题切换实现/" data-id="cixbj8xk4000l44tfrkwcgzmd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主题/">主题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主题切换/">主题切换</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/30/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/23/模板/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/5-0新特性/">5.0新特性</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android优化/">Android优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android更新/">Android更新</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android消息机制/">Android消息机制</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/主题切换/">主题切换</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/图片加载框架/">图片加载框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/屏幕适配/">屏幕适配</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/更换头像/">更换头像</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/源码分析/">源码分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/第三方UI库/">第三方UI库</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/supports-screens/"><supports-screens></a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIDL/">AIDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binder/">Binder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fresco/">Fresco</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Glide/">Glide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handler/">Handler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Looper/">Looper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PagerSlidingTabStrip/">PagerSlidingTabStrip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Picasso/">Picasso</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecyclerView/">RecyclerView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UniversalImageLoader/">UniversalImageLoader</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-API/">android API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/主题/">主题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/主题切换/">主题切换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/增量更新/">增量更新</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/头像/">头像</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/屏幕适配/">屏幕适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能/">性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息机制/">消息机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/热修复/">热修复</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组件化/">组件化</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/supports-screens/" style="font-size: 10px;"><supports-screens></a> <a href="/tags/AIDL/" style="font-size: 10px;">AIDL</a> <a href="/tags/Binder/" style="font-size: 10px;">Binder</a> <a href="/tags/Fresco/" style="font-size: 10px;">Fresco</a> <a href="/tags/Glide/" style="font-size: 10px;">Glide</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Looper/" style="font-size: 10px;">Looper</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PagerSlidingTabStrip/" style="font-size: 10px;">PagerSlidingTabStrip</a> <a href="/tags/Picasso/" style="font-size: 10px;">Picasso</a> <a href="/tags/RecyclerView/" style="font-size: 10px;">RecyclerView</a> <a href="/tags/UniversalImageLoader/" style="font-size: 10px;">UniversalImageLoader</a> <a href="/tags/android-API/" style="font-size: 10px;">android API</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/主题/" style="font-size: 10px;">主题</a> <a href="/tags/主题切换/" style="font-size: 10px;">主题切换</a> <a href="/tags/增量更新/" style="font-size: 10px;">增量更新</a> <a href="/tags/头像/" style="font-size: 10px;">头像</a> <a href="/tags/屏幕适配/" style="font-size: 10px;">屏幕适配</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/消息机制/" style="font-size: 10px;">消息机制</a> <a href="/tags/热修复/" style="font-size: 10px;">热修复</a> <a href="/tags/组件化/" style="font-size: 10px;">组件化</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/23/主题切换实现/">Android主题切换实现</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/23/模板/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/22/supports-screens使用/">supports-screens使用</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/29/APP更换头像实现/">APP更换头像实现</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
